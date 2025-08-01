@@ -1,0 +1,45 @@
+[project]
+name = "webapp"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "django (>=5.2.4,<6.0.0)"
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.7"
+django-types = "^0.22.0"
+django-stubs-ext = "^5.2.2"
+psycopg = "^3.2.9"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 140
+
+[tool.ruff.lint]
+select = [
+    "B",    # flake8-bugbear (likely bugs and code smells)
+    "E",    # pycodestyle (errors)
+    "F",    # Pyflakes (Python syntax errors)
+    "I",    # isort (import order and formatting)
+    "PERF", # perflint (performance)
+    "PTH",  # flake8-use-pathlib (prefer 'pathlib' over 'os' module)
+    "Q",    # flake8-quotes (enforce consistent usage of string quotes)
+    "S",    # flake8-bandit (security)
+    "SIM",  # flake8-simplify
+    "TRY",  # tryceratops (exception handling anti-patterns)
+    "UP",   # pyupgrade
+    "W"     # pycodestyle (warnings)
+]
+
+[tool.poe.tasks]
+django = "./manage.py"
+start = "poe django runserver"

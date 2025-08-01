@@ -1,0 +1,7 @@
+<h1>To-Do</h1>
+
+<ul>
+    {% for item in items %}
+        <li><a href="{% url 'todo:detail' item.id %}">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>

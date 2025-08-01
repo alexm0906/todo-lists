@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": ".",
+		},
+		{
+			"path": "server",
+			"name": "server"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"server/": true,
+		}
+	}
+}
