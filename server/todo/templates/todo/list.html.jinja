@@ -1,8 +1,8 @@
 <a href="{% url 'todo:index' %}">Back</a>
-<h1>{{ todo_list.name }}</h1>
+<h1>{{ todolist.name }}</h1>
 
 <ul>
-    {% for item in todo_list.items.all %}
-        <li>{{ item.item }}</li>
+    {% for todoitem in todolist.items.all %}
+        <li>{{ todoitem.item }}</li>
     {% endfor %}
 </ul>

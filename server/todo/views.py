@@ -1,16 +1,17 @@
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import get_object_or_404, render
+from django.db.models.query import QuerySet
+from django.views import generic
 
 from todo.models import ToDoList
 
 
-def index(request: HttpRequest) -> HttpResponse:
-    items = ToDoList.objects.all()
+class IndexView(generic.ListView):
+    template_name = "todo/index.html.jinja"
 
-    return render(request, "todo/index.html.jinja", {"items": items})
+    def get_queryset(self) -> QuerySet[ToDoList]:
+        return ToDoList.objects.all()
 
 
-def detail(request: HttpRequest, list_id: int) -> HttpResponse:
-    todo_list = get_object_or_404(ToDoList, pk=list_id)
+class DetailView(generic.DetailView):
+    model = ToDoList
+    template_name = "todo/list.html.jinja"
 
-    return render(request, "todo/list.html.jinja", {"todo_list": todo_list})

@@ -3,6 +3,7 @@ from django.db import models
 
 class ToDoList(models.Model):
     name = models.CharField(max_length=256)
+    items: models.Manager["ToDoItem"]
 
     def __str__(self) -> str:
         return self.name
