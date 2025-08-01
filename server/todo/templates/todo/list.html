@@ -1,0 +1,22 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+<div class="row my-5">
+    <div class="col">
+        <h1>{{ todolist.name }}</h1>
+    </div>
+    <div class="col-2 d-flex align-items-center justify-content-end">
+        <a class="btn btn-outline-primary" href="{% url 'todo:index' %}">Back</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <ul class="list-group">
+            {% for todoitem in todolist.items.all %}
+                <li class="list-group-item">{{ todoitem.item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

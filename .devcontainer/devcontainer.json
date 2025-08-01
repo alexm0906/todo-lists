@@ -29,7 +29,7 @@
 			"extensions": [
 				"charliermarsh.ruff",
 				"ms-ossdata.vscode-pgsql",
-				"samuelcolvin.jinjahtml"
+				"batisteo.vscode-django"
 			]
 		}
 	},

@@ -5,7 +5,7 @@ from todo.models import ToDoList
 
 
 class IndexView(generic.ListView):
-    template_name = "todo/index.html.jinja"
+    template_name = "todo/index.html"
 
     def get_queryset(self) -> QuerySet[ToDoList]:
         return ToDoList.objects.all()
@@ -13,5 +13,5 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     model = ToDoList
-    template_name = "todo/list.html.jinja"
+    template_name = "todo/list.html"
 

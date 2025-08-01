@@ -5,6 +5,9 @@ class ToDoList(models.Model):
     name = models.CharField(max_length=256)
     items: models.Manager["ToDoItem"]
 
+    def incomplete_count(self):
+        return self.items.filter(completed=False).count()
+
     def __str__(self) -> str:
         return self.name
 
