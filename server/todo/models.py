@@ -19,3 +19,9 @@ class ToDoItem(models.Model):
 
     def __str__(self) -> str:
         return self.item
+
+
+class Profile(models.Model):
+    username = models.CharField(max_length=256)
+    name = models.CharField(max_length=256)
+    description = models.TextField()
