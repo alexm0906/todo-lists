@@ -20,7 +20,7 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": {
-		"poetry": "cd server && poetry install"
+		"poetry": "cd server && poetry install && poe django migrate"
 	},
 
 	// Configure tool-specific properties.
