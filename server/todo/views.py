@@ -1,9 +1,10 @@
 from django.db import connection
 from django.db.models.query import QuerySet
 from django.http import HttpRequest, HttpResponse, HttpResponseNotFound
+from django.shortcuts import redirect
 from django.views import generic
 
-from todo.models import ToDoList
+from todo.models import ToDoItem, ToDoList
 
 
 class IndexView(generic.ListView):
@@ -16,6 +17,26 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = ToDoList
     template_name = "todo/list.html"
+
+    def post(self, request: HttpRequest, pk: int):
+        """
+        Voeg een nieuw item toe aan een todo list.
+        """
+
+        # Haal het item op uit de opgestuurde form
+        item = request.POST.get("item")
+
+        # Haal de huidige todo list op
+        todo_list = self.get_object()
+
+        # Maak een nieuw item aan op de huidige todo list
+        todo_item = ToDoItem(list=todo_list, item=item, completed=False)
+
+        # Sla het nieuwe item op in de database
+        todo_item.save()
+
+        # Stuur de gebruiker door naar de bijgewerkte lijst
+        return redirect(request.path_info, pk=pk)
 
 
 def profile_view(request: HttpRequest, username: str) -> HttpResponse:

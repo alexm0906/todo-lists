@@ -10,6 +10,16 @@
     </div>
 </div>
 
+<form class="row row-cols-lg-auto g-3 align-items-center mb-3" method="post">
+    {% csrf_token %}
+    <div class="col-12">
+        <input class="form-control" id="item" name="item" type="text">
+    </div>
+    <div class="col-12">
+        <input class="btn btn-primary" type="submit" value="Add">
+    </div>
+</form>
+
 <div class="row">
     <div class="col">
         <ul class="list-group">
