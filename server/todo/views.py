@@ -41,8 +41,7 @@ class DetailView(generic.DetailView):
 
 def profile_view(request: HttpRequest, username: str) -> HttpResponse:
     with connection.cursor() as cursor:
-        # NOTE: Explicitly vulnerable to SQL Injection for demo purposes
-        cursor.execute(f"SELECT name, description FROM todo_profile WHERE username = '{username}'")
+        cursor.execute("SELECT name, description FROM todo_profile WHERE username = %s", [username])
         row = cursor.fetchone()
 
     if row:
